@@ -9,9 +9,9 @@ function convertToObject(sourceString) {
   const result = {};
   const separateStyles = sourceString
     .split(';')
-    .map((style) => style.replaceAll('\t', ''))
-    .filter((style) => style.replaceAll('\n', ' ') !== ' '.repeat(style.length))
-    .map((style) => style.split(':'));
+    .filter((style) => style.trim().length !== 0)
+    .map((style) => style.split(':'))
+    .filter((style) => style.length === 2);
 
   separateStyles.forEach(
     (style) => (result[style[0].trim()] = style[1].trim()),
